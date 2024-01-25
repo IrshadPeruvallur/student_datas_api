@@ -7,26 +7,23 @@ class StudentService {
   Dio dio = Dio();
 
   Future<List<StudentModel>> getStudentInfo(userId) async {
-    final url =
-        'https://65b0ee27d16d31d11bdd9a28.mockapi.io/studentData/user/2/data';
+    final url = 'https://65b0ee27d16d31d11bdd9a28.mockapi.io/studentData/user/$userId/data';
     try {
       final Response response = await dio.get(url);
+      log("${response.statusCode}");
+      log(url);
       if (response.statusCode == 200) {
-        log(response.data);
-        // final List<dynamic> data = response.data;
-        // return data.map((json) => StudentModel.fromJson(json)).toList();
-        log(response.data.toString());
-        final List<dynamic> data = response.data;
-        return data.map((json) => StudentModel.fromJson(json)).toList();
+        log("successfull");
+        final data = response.data as List;
+        return data.map((data) => StudentModel.fromJson(data)).toList();
       } else {
-        throw Exception('Failed to load data');
+        throw Exception('Faild to load data');
       }
     } catch (e) {
-      log("Error form std service");
+      log('error form stdGetInfo');
       rethrow;
     }
   }
-
   addStudentInfo(StudentModel data, userId) async {
     final url =
         'https://65b0ee27d16d31d11bdd9a28.mockapi.io/studentData/user/$userId/data';

@@ -18,7 +18,6 @@ class StudentProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
   postStudentDatas() async {
     final userId = await shrdPrf.getShrdPrf('userId');
     final data = StudentModel(
@@ -28,6 +27,6 @@ class StudentProvider extends ChangeNotifier {
         phone: int.parse(phoneController.text));
 
     await studentService.addStudentInfo(data, userId);
-    notifyListeners();
+    getStudentDatas();
   }
 }

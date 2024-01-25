@@ -7,6 +7,7 @@ import 'package:student_datas/view/splash/splash.dart';
 
 void main() {
   runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
 }
 
 class MyApp extends StatelessWidget {
