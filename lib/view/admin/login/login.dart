@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:student_datas/controller/user_provider.dart';
 import 'package:student_datas/model/user_model.dart';
-import 'package:student_datas/view/admin/login/login.dart';
+import 'package:student_datas/view/admin/bottom_bar/bottom_bar.dart';
+import 'package:student_datas/view/admin/students/students_list.dart';
 import 'package:student_datas/view/student/bottom_bar/bottombar.dart';
 import 'package:student_datas/view/student/display/add_details.dart';
 import 'package:student_datas/view/student/display/list_page.dart';
@@ -12,8 +13,11 @@ import 'package:student_datas/view/student/login/sign_up.dart';
 import 'package:student_datas/view/widgets/buttons.dart';
 import 'package:student_datas/view/widgets/messages.dart';
 
-class StudentLogin extends StatelessWidget {
-  StudentLogin({super.key});
+class AdminLogin extends StatelessWidget {
+  AdminLogin({super.key});
+
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final getProvider = Provider.of<UserProvider>(context, listen: false);
@@ -28,14 +32,14 @@ class StudentLogin extends StatelessWidget {
               height: 30,
             ),
             TextFormField(
-              controller: getProvider.usernameController,
+              controller: usernameController,
               decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
             const SizedBox(
               height: 20,
             ),
             TextFormField(
-              controller: getProvider.passwordController,
+              controller: passwordController,
               decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
             const SizedBox(
@@ -44,12 +48,12 @@ class StudentLogin extends StatelessWidget {
             elevatedButton(
               'Login',
               onPressed: () async {
-                await getProvider.userLogin();
-                getProvider.matchedUsers!.isNotEmpty
+                usernameController.text == "irshad" &&
+                        passwordController.text == "000"
                     ? Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => BottomBarPage(),
+                          builder: (context) => AdminBottomBarPage(),
                         ),
                       )
                     : shwoErrorSnackbar(
@@ -58,22 +62,9 @@ class StudentLogin extends StatelessWidget {
             ),
             TextButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => StudentSignUp(),
-                      ));
+                  Navigator.pop(context);
                 },
-                child: Text("SignUp")),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AdminLogin(),
-                      ));
-                },
-                child: Text("Admin"))
+                child: Text("Back"))
           ],
         ),
       ),

@@ -8,15 +8,14 @@ import 'package:student_datas/view/student/display/add_details.dart';
 import 'package:student_datas/view/student/login/login.dart';
 import 'package:student_datas/view/widgets/buttons.dart';
 
-class DetailsPage extends StatelessWidget {
-  const DetailsPage({Key? key}) : super(key: key);
+class ListPage extends StatelessWidget {
+  const ListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Provider.of<StudentProvider>(context, listen: false).getStudentDatas();
     final shrdPvdr = Provider.of<ShrdPrfProvider>(context, listen: false);
-      final value = Provider.of<StudentProvider>(context, listen: false);
-  value.getStudentDatas();
+    final value = Provider.of<StudentProvider>(context, listen: false);
+    value.getStudentDatas();
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -36,7 +35,6 @@ class DetailsPage extends StatelessWidget {
         body: Column(
           children: [
             Consumer<StudentProvider>(builder: (context, value, child) {
-             
               return Expanded(
                 child: ListView.builder(
                   itemCount: value.studentDataList.length,
@@ -55,7 +53,7 @@ class DetailsPage extends StatelessWidget {
               onPressed: () async {
                 final String id = await shrdPvdr.getShrdPrf('userId');
                 log(id);
-                Navigator. push(
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => AddDetails(),

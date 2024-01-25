@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:student_datas/controller/pages_controller/bottom_bar.dart';
 import 'package:student_datas/controller/student_provider.dart';
 import 'package:student_datas/controller/user_provider.dart';
 import 'package:student_datas/model/shrd_prf_provider.dart';
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => ShrdPrfProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => BottomBarProvider(),
         ),
       ],
       child: MaterialApp(
