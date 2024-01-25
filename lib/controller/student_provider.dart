@@ -9,19 +9,19 @@ class StudentProvider extends ChangeNotifier {
   final TextEditingController emailController = TextEditingController();
   StudentService studentService = StudentService();
   List<StudentModel> studentDataList = [];
-  getStudentDatas() async {
-    studentDataList = await studentService.getStudentInfo();
+  getStudentDatas(userId) async {
+    studentDataList = await studentService.getStudentInfo(userId);
     notifyListeners();
   }
 
-  postStudentDatas() async {
+  postStudentDatas(userId) async {
     final data = StudentModel(
         name: nameController.text,
         age: int.parse(ageController.text),
         email: emailController.text,
         phone: int.parse(phoneController.text));
 
-    await studentService.addStudentInfo(data);
+    await studentService.addStudentInfo(data, userId);
     notifyListeners();
   }
 }

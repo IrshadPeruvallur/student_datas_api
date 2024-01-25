@@ -1,7 +1,7 @@
 class UserModel {
   String? username;
   String? password;
-  int? userId;
+  String? userId;
   UserModel({this.password, this.userId, this.username});
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(

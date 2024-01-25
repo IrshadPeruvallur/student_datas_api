@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:student_datas/controller/user_provider.dart';
 import 'package:student_datas/view/student/display/add_details.dart';
+import 'package:student_datas/view/student/login/login.dart';
 import 'package:student_datas/view/widgets/buttons.dart';
 
 class StudentSignUp extends StatelessWidget {
@@ -39,10 +40,19 @@ class StudentSignUp extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AddDetails(),
+                      builder: (context) => StudentLogin(),
                     ));
               },
-            )
+            ),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => StudentLogin(),
+                      ));
+                },
+                child: Text("Login"))
           ],
         ),
       ),

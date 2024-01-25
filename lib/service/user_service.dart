@@ -16,7 +16,7 @@ class UserService {
       log("${response.statusCode}");
       log(url);
       if (response.statusCode == 200) {
-        log("successfull");
+        log("Loaded all student details");
         final data = response.data as List;
         return data.map((data) => UserModel.fromJson(data)).toList();
       } else {

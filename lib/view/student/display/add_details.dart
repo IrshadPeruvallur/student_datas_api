@@ -39,7 +39,7 @@ class AddDetails extends StatelessWidget {
             elevatedButton(
               'Submit',
               onPressed: () {
-                getProvider.postStudentDatas();
+                // getProvider.postStudentDatas();
                 Navigator.push(
                     context,
                     MaterialPageRoute(

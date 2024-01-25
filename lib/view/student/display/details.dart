@@ -7,7 +7,7 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<StudentProvider>(context, listen: false).getStudentDatas();
+    // Provider.of<StudentProvider>(context, listen: false).getStudentDatas();
     return Scaffold(
       appBar: AppBar(),
       body: Column(
