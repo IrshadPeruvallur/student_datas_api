@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:student_datas/model/student_model.dart';
 import 'package:student_datas/model/user_model.dart';
 
 class UserService {
@@ -23,7 +22,7 @@ class UserService {
         throw Exception('Faild to load data');
       }
     } catch (e) {
-      log('message');
+      log('Error form ures Service');
       rethrow;
     }
   }

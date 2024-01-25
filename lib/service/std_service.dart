@@ -8,20 +8,21 @@ class StudentService {
 
   Future<List<StudentModel>> getStudentInfo(userId) async {
     final url =
-        'https://65b0ee27d16d31d11bdd9a28.mockapi.io/studentData/user/$userId/data';
+        'https://65b0ee27d16d31d11bdd9a28.mockapi.io/studentData/user/2/data';
     try {
       final Response response = await dio.get(url);
-      log("${response.statusCode}");
-      log(url);
       if (response.statusCode == 200) {
-        log("successfull");
-        final data = response.data as List;
-        return data.map((data) => StudentModel.fromJson(data)).toList();
+        log(response.data);
+        // final List<dynamic> data = response.data;
+        // return data.map((json) => StudentModel.fromJson(json)).toList();
+        log(response.data.toString());
+        final List<dynamic> data = response.data;
+        return data.map((json) => StudentModel.fromJson(json)).toList();
       } else {
-        throw Exception('Faild to load data');
+        throw Exception('Failed to load data');
       }
     } catch (e) {
-      log('message');
+      log("Error form std service");
       rethrow;
     }
   }

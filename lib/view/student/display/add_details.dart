@@ -24,7 +24,7 @@ class AddDetails extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            textFormField(getProvider.ageController, 'Age'),
+            textFormField(getProvider.addressController, 'Address'),
             SizedBox(
               height: 20,
             ),
@@ -39,12 +39,12 @@ class AddDetails extends StatelessWidget {
             elevatedButton(
               'Submit',
               onPressed: () {
-                // getProvider.postStudentDatas();
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DetailsPage(),
-                    ));
+                getProvider.postStudentDatas();
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //       builder: (context) => DetailsPage(),
+                //     ));
               },
             )
           ],

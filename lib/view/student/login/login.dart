@@ -6,7 +6,9 @@ import 'package:student_datas/controller/user_provider.dart';
 import 'package:student_datas/model/user_model.dart';
 import 'package:student_datas/view/student/display/add_details.dart';
 import 'package:student_datas/view/student/display/details.dart';
+import 'package:student_datas/view/student/login/sign_up.dart';
 import 'package:student_datas/view/widgets/buttons.dart';
+import 'package:student_datas/view/widgets/messages.dart';
 
 class StudentLogin extends StatelessWidget {
   StudentLogin({super.key});
@@ -40,30 +42,27 @@ class StudentLogin extends StatelessWidget {
             elevatedButton(
               'Login',
               onPressed: () async {
-                final List<UserModel> matchedUsers = getProvider.allUserList
-                    .where(
-                      (UserModel user) =>
-                          user.username!
-                              .contains(getProvider.usernameController.text) &&
-                          user.password!
-                              .contains(getProvider.passwordController.text),
-                    )
-                    .toList();
-
-                if (matchedUsers.isNotEmpty) {
-                  final UserModel matchedUser = matchedUsers.first;
-                  log("User ID: ${matchedUser.userId}");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DetailsPage(),
-                    ),
-                  );
-                } else {
-                  log("User not found");
-                }
+                await getProvider.userLogin();
+                getProvider.matchedUsers!.isNotEmpty
+                    ? Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailsPage(),
+                        ),
+                      )
+                    : shwoErrorSnackbar(
+                        context, 'Username password did not match');
               },
-            )
+            ),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => StudentSignUp(),
+                      ));
+                },
+                child: Text("SignUp"))
           ],
         ),
       ),
