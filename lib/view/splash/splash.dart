@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:student_datas/model/shrd_prf_provider.dart';
 import 'package:student_datas/view/student/bottom_bar/bottombar.dart';
-import 'package:student_datas/view/student/display/list_page.dart';
+import 'package:student_datas/view/student/display/todo_list_page.dart';
 import 'package:student_datas/view/student/login/login.dart';
 
 class SplashScreen extends StatefulWidget {

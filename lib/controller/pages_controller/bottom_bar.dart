@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:student_datas/view/admin/students/student_data.dart';
 import 'package:student_datas/view/admin/students/students_list.dart';
 import 'package:student_datas/view/student/display/add_details.dart';
-import 'package:student_datas/view/student/display/list_page.dart';
+import 'package:student_datas/view/student/display/todo_list_page.dart';
 
 class BottomBarProvider extends ChangeNotifier {
   List<BottomNavigationBarItem> stdItems = [
@@ -20,7 +20,7 @@ class BottomBarProvider extends ChangeNotifier {
       label: 'Profile',
     ),
   ];
-  List stdTabs = [ListPage(), AddDetails(), AddDetails()];
+  List stdTabs = [TodoListPage(), AddDetails(), AddDetails()];
 
   int stdCurrendIndex = 0;
   stdBottmIndex(index) {

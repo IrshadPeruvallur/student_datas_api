@@ -7,10 +7,11 @@ import 'package:student_datas/model/user_model.dart';
 import 'package:student_datas/view/admin/login/login.dart';
 import 'package:student_datas/view/student/bottom_bar/bottombar.dart';
 import 'package:student_datas/view/student/display/add_details.dart';
-import 'package:student_datas/view/student/display/list_page.dart';
+import 'package:student_datas/view/student/display/todo_list_page.dart';
 import 'package:student_datas/view/student/login/sign_up.dart';
 import 'package:student_datas/view/widgets/buttons.dart';
 import 'package:student_datas/view/widgets/messages.dart';
+import 'package:student_datas/view/widgets/text_fields.dart';
 
 class StudentLogin extends StatelessWidget {
   StudentLogin({super.key});
@@ -27,17 +28,11 @@ class StudentLogin extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TextFormField(
-              controller: getProvider.usernameController,
-              decoration: const InputDecoration(border: OutlineInputBorder()),
-            ),
+            textFormField(getProvider.usernameController, 'Username'),
             const SizedBox(
               height: 20,
             ),
-            TextFormField(
-              controller: getProvider.passwordController,
-              decoration: const InputDecoration(border: OutlineInputBorder()),
-            ),
+            textFormField(getProvider.passwordController, 'Password'),
             const SizedBox(
               height: 20,
             ),

@@ -1,15 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:student_datas/controller/user_provider.dart';
-import 'package:student_datas/model/user_model.dart';
 import 'package:student_datas/view/admin/bottom_bar/bottom_bar.dart';
-import 'package:student_datas/view/admin/students/students_list.dart';
-import 'package:student_datas/view/student/bottom_bar/bottombar.dart';
-import 'package:student_datas/view/student/display/add_details.dart';
-import 'package:student_datas/view/student/display/list_page.dart';
-import 'package:student_datas/view/student/login/sign_up.dart';
 import 'package:student_datas/view/widgets/buttons.dart';
 import 'package:student_datas/view/widgets/messages.dart';
 
