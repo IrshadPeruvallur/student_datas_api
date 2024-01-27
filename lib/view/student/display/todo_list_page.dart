@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:student_datas/controller/student_provider.dart';
 import 'package:student_datas/model/shrd_prf_provider.dart';
 import 'package:student_datas/view/student/display/add_details.dart';
+import 'package:student_datas/view/student/display/todo_page.dart';
 import 'package:student_datas/view/student/login/login.dart';
 import 'package:student_datas/view/widgets/buttons.dart';
 
@@ -41,6 +42,7 @@ class TodoListPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final data = value.studentDataList[index];
                   return ListTile(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => TodoPage(name: data.name, age: data.address, phone: data.phone),)),
                     title: Text(data.name?.toString() ?? 'No Name'),
                     subtitle: Text(data.phone?.toString() ?? 'No Phone'),
                   );
@@ -51,8 +53,7 @@ class TodoListPage extends StatelessWidget {
           elevatedButton(
             'Add Details',
             onPressed: () async {
-              final String id = await shrdPvdr.getShrdPrf('userId');
-              log(id);
+             
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -63,8 +64,7 @@ class TodoListPage extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {}, label: Text('Add Notes')),
+     
     );
   }
 }
